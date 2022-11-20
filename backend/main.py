@@ -46,5 +46,5 @@ def clearPost(dados:dict):
         print(f"{k} == {v}")
 
 
-
+clearPost(informacao_postagem)
         
