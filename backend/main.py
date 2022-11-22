@@ -7,11 +7,22 @@ def moveImage():
     ...
 
 
+def createJson(dados:dict):
+    object_json = js.dumps(dados, indent=4)
+    with open("dados_postagem.json","w+") as file_json:
+            file_json.write(object_json)
+
+
+
+
 key = "KrL7X150niTvBvtXjOM1GyGfzocWyOTZPrsC4Ki4"
 url_base = f"https://api.nasa.gov/planetary/apod?api_key={key}"
 
 content = re.get(url_base)
 informacao_postagem = {}
+
+
+
 
 
 if content.status_code == 200:
@@ -28,23 +39,8 @@ if content.status_code == 200:
         elif k == 'title':
             informacao_postagem["titulo"] = v
 
+createJson(informacao_postagem)
 
 
-file = informacao_postagem
-class InformacoesPostagem():
-    def __init__(self, copy='',date='', content='', url_image='',title_post='' ):
-        self.copy = copy
-        self.date = date
-        self.content = content
-        self.url_image =  url_image
-        self.title_post = title_post
-        
 
 
-def clearPost(dados:dict):
-    for k, v in dados.items():
-        print(f"{k} == {v}")
-
-
-clearPost(informacao_postagem)
-        
