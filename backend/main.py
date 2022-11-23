@@ -39,7 +39,9 @@ if content.status_code == 200:
         elif k == 'title':
             informacao_postagem["titulo"] = v
 
-createJson(informacao_postagem)
+
+if __name__ == "__main__":
+    createJson(informacao_postagem)
 
 
 
